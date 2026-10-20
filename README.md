@@ -8,7 +8,7 @@ e o diagrama geral. Cada serviço vive no próprio repositório.
 
 | Repositório | Linguagem | Papel |
 |---|---|---|
-| marketplace-web | React + TypeScript | vitrine pública e landing |
+| marketplace-customer | React + TypeScript | vitrine do comprador e landing |
 | marketplace-catalog | Node.js | catálogo de produtos e API gateway |
 | marketplace-orders | C# / .NET 8 | pedidos e checkout |
 | marketplace-auth | Node.js | autenticação, JWT, 2FA |

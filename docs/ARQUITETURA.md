@@ -19,15 +19,15 @@ graph LR
     buyer([Comprador])
     seller([Vendedor])
     admin([Administrador])
-    web[marketplace-web<br/>React]
+    customer[marketplace-customer<br/>React]
     sellerPanel[marketplace-seller<br/>Laravel]
     app[marketplace-app<br/>React Native]
     core{{Serviços de back-end}}
-    buyer --> web
+    buyer --> customer
     buyer --> app
     seller --> sellerPanel
-    admin --> web
-    web --> core
+    admin --> customer
+    customer --> core
     app --> core
     sellerPanel --> core
 ```
@@ -37,7 +37,7 @@ graph LR
 ```mermaid
 graph TB
     subgraph Front
-        web[web :3000]
+        customer[customer :3000]
         sellerPanel[seller :3004]
     end
     subgraph Back
@@ -53,9 +53,9 @@ graph TB
         sqliteA[(SQLite analytics)]
         sqliteN[(SQLite notifications)]
     end
-    web --> catalog
-    web --> orders
-    web --> auth
+    customer --> catalog
+    customer --> orders
+    customer --> auth
     sellerPanel --> catalog
     sellerPanel --> orders
     sellerPanel --> analytics

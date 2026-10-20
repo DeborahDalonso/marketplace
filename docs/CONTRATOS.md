@@ -8,7 +8,7 @@ não lê o banco de outro; a comunicação é por evento ou por REST.
 
 | Serviço | Repositório | Porta | Banco | Expõe REST | Produz eventos | Consome eventos |
 |---|---|---|---|---|---|---|
-| web | marketplace-web | 3000 | nenhum | não (SPA) | não | não |
+| customer | marketplace-customer | 3000 | nenhum | não (SPA) | não | não |
 | catalog | marketplace-catalog | 3001 | MySQL `marketplace_catalog` | sim | `product.*`, `stock.*` | `order.created`, `order.cancelled` |
 | orders | marketplace-orders | 3002 | MySQL `marketplace_orders` | sim | `order.*`, `payment.*` | `stock.reserved`, `stock.rejected` |
 | auth | marketplace-auth | 3003 | MySQL `marketplace_auth` | sim | `user.registered` | não |
@@ -131,7 +131,7 @@ Todo evento no Kafka tem este envelope. `data` varia por tipo.
 
 `product.deleted`: `{ "productId": "prd_...", "sellerId": "usr_..." }`
 
-`product.viewed` (produzido pelo `web` via `POST /products/:id/views` no
+`product.viewed` (produzido pelo `customer` via `POST /products/:id/views` no
 catalog): `{ "productId": "prd_...", "userId": "usr_..." | null }`
 
 `stock.reserved`
@@ -189,7 +189,7 @@ catalog): `{ "productId": "prd_...", "userId": "usr_..." | null }`
 
 ```mermaid
 sequenceDiagram
-    participant W as web
+    participant W as customer
     participant O as orders
     participant C as catalog
     participant N as notifications
