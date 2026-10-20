@@ -25,11 +25,22 @@ e o diagrama geral. Cada serviço vive no próprio repositório.
 
 ## Como rodar
 
-Em breve, quando os primeiros serviços existirem.
+Infra local (MySQL e Redpanda):
+
+```bash
+docker compose up -d mysql redpanda
+docker compose --profile tools up -d redpanda-console   # opcional, http://localhost:8080
+```
+
+Depois, cada serviço sobe com o comando de desenvolvimento descrito no README
+dele, apontando para `localhost:3306` e `localhost:19092`. O `.env.example` de
+cada repositório já vem com esses valores.
 
 ## Documentação
 
-- [Padrões de desenvolvimento](docs/PADROES.md)
+- [Arquitetura](docs/ARQUITETURA.md): contexto, containers, decisões.
+- [Contratos](docs/CONTRATOS.md): portas, eventos, JWT, formato de resposta.
+- [Padrões de desenvolvimento](docs/PADROES.md): estilo de código válido para todos os repositórios.
 
 ## Licença
 
